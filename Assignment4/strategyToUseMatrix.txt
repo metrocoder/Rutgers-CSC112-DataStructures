@@ -1,0 +1,40 @@
+[0|1|2|3|4|5] -> adjLists
+
+
+
+ 0 1 2 3 4 5
+[T|F|F|F|F|F] -> tree
+
+ 0 1 2 3 4 5
+[F|T|F|F|T|F] -> fringe
+
+
+A    [F|T|F|F|T|F]
+B    [T|F|F|F|F|T]
+C    [F|F|F|F|F|F]
+D    [F|F|F|F|F|F]
+E    [T|F|F|F|F|F]
+F    [F|T|F|F|F|F]
+
+   0     1   2 3   4   5
+[T,0,0|F,0,4|F|F|F,0,7|F] -> SPRecord - store them based on adjLists
+
+
+Steps:
+- Create all arrays according to the length of the adjLists array
+	- this is done to use the index to know which vertex needs to be checked on
+	- 3 arrays needed for (Tree, Fringe, SPRecord), and a 2d adjMatrix needed
+
+- When we initialize we lookup the index for the "Source" vertex and place it
+  based on that index in the _Tree_ array.
+- Next, update the _Fringe_ and _adjMatrix_ to keep track of the adj Verticies of the   "Source"
+
+- Loop - (while(fringeLength>0))
+	-Go through which adj Vertex has the shortest distance from "Source", 
+         add it to the _tree_ and remove from _Fringe_
+	 	- go through its adj Vertices, update _Fringe_ and _adjMatrix_
+			- IF, the adj Vertices is in the Fringe see if the path to it is
+			  shorter than its current distance from its previous-predecessor
+
+
+
